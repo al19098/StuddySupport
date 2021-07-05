@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">StudySupport</string>
+    <string name="start">スタート</string>
+    <string name="stop">ストップ</string>
+    <string name="reset">リセット</string>
+    <string name="timer">タイマー</string>
+    <string name="stopwatch">ストップウォッチ</string>
+    <string name="zeros">00:00</string>
+    <string name="colon">:</string>
+    <string name="button_hat">？</string>
+
+    <string name="setgoal">目標設定</string>
+    <string name="goaltimetext">学習目標:</string>
+    <string name="inputcoment">週間学習目標時間を入力してください</string>
+    <string name="okbutton">確認</string>
+    <string name="ngbutton">キャンセル</string>
+    <string name="time">時間</string>
+    <string name="time2">時間</string>
+    <string name="goalpercent">達成度</string>
+    <string name="percent">％</string>
+    <string name="dialogtitle">エラー</string>
+    <string name="dialogmsg">168時間未満の時間を入力してください</string>
+    <string name="dialogbutton">閉じる</string>
+    <string name="hintbutton">？</string>
+    <string name="hintdialogbutton">OK</string>
+    <string name="hinttitle">ヒント</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="info_title">イベント確認</string>
+
+    <string name="lbl_title">内容：</string>
+    <string name="lbl_content">締め切り：</string>
+    <string name="btn_input_register">登録</string>
+    <string name="toast_register">登録しました</string>
+    <string name="toast_failed">登録出来ませんでした</string>
+
+    <string name="hint_title">タイトルを入力してください</string>
+    <string name="hint_content">内容を入力してください</string>
+    <string name="btn_input_to_list">一覧画面へ</string>
+    <string name="lbl_empty">表示するTODOはありません</string>
+
+    <string name="btn_update">更新</string>
+    <string name="toast_update">更新しました</string>
+
+    <string name="btn_delete">削除</string>
+    <string name="toast_delete">削除しました</string>
+    <string name="done">完了</string>
+    <string name="hello">Hellow</string>
+    <string name="make_timers_msg">aaaa</string>
+    <string name="toast_failed20">20文字未満で入力してください</string>
+    <string name="toast_failed1">1文字以上で入力してください</string>
+</resources>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/setgoalbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="277dp"
+        android:layout_marginLeft="277dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/setgoal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/hintbutton"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginStart="350dp"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/circle_button"
+        android:text="@string/hintbutton"
+        android:textSize="13sp"
+        app:backgroundTint="#FFEB3B"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/goaltimetext"
+        android:layout_width="110dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/goaltimetext"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:text="@string/time"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/setgoalbutton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/goalpercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="306dp"
+        android:layout_marginRight="306dp"
+        android:text="@string/goalpercent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goaltimetext" />
+
+    <TextView
+        android:id="@+id/percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/percent"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/goalpercent"
+        app:layout_constraintTop_toBottomOf="@+id/goaltimetext" />
+
+    <TextView
+        android:id="@+id/percenttime"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/goalpercent"
+        app:layout_constraintTop_toBottomOf="@+id/goaltimetext" />
+
+    <TextView
+        android:id="@+id/readtime"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginTop="80dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/time"
+        app:layout_constraintStart_toEndOf="@+id/goaltimetext"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchart"
+            android:layout_width="match_parent"
+            android:layout_height="364dp"
+            android:layout_marginTop="170dp" />
+
+
+    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/design_default_color_surface"
+        app:itemTextColor="@drawable/bnv_state"
+        app:itemIconTint="@drawable/bnv_state"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_navigation"
+        tools:ignore="InvalidId" />
+</androidx.constraintlayout.widget.ConstraintLayout>

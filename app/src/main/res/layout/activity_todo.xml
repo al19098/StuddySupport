@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ToDo_UI">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="403dp"
+        android:layout_height="75dp"
+        android:text="ToDoリスト"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068" />
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/roundebutton"
+
+        android:onClick="sakusei_onClick"
+
+        android:text="作成"
+        app:layout_constraintBottom_toTopOf="@+id/bnv"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+
+        android:id="@android:id/list"
+        android:layout_width="393dp"
+        android:layout_height="381dp"
+        android:layout_marginTop="200dp"
+        android:choiceMode="multipleChoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </ListView>
+
+    <!-- <ImageButton
+         android:id="@+id/buttonHelp"
+         android:layout_width="30dp"
+         android:layout_height="30dp"
+         android:layout_marginEnd="16dp"
+         android:layout_marginRight="16dp"
+         android:background="#FFC107"
+         android:onClick="onTapEvent"
+         android:src="@android:drawable/ic_menu_help"
+         app:layout_constraintBottom_toTopOf="@+id/textNext"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.545"
+         app:layout_constraintStart_toEndOf="@+id/imageButton"
+         app:layout_constraintTop_toBottomOf="@+id/pieChart"
+         app:layout_constraintVertical_bias="0.054" />
+         -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/design_default_color_surface"
+        app:itemIconTint="@drawable/bnv_state"
+        app:itemTextColor="@drawable/bnv_state"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_navigation"
+        tools:ignore="InvalidId" />
+</androidx.constraintlayout.widget.ConstraintLayout>
