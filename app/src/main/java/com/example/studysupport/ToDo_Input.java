@@ -20,15 +20,19 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.ContentProviderClient;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.studysupport.helper.ToDoOpenHelper;
@@ -37,11 +41,14 @@ public class ToDo_Input extends AppCompatActivity {
 
     private View view;
     EditText simekiri; //日付ダイアログのEditText
-
+    InputMethodManager inputMethodManager; // キーボートの有無や背景タッチを可能にするため
+    private LinearLayout mainLayout;       //のもの
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
+        inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        mainLayout = (LinearLayout) findViewById(R.id.setting_layout);
         simekiri = (EditText) findViewById(R.id.edit_text2);//日付ダイアログのEditText
     }
 
@@ -57,11 +64,11 @@ public class ToDo_Input extends AppCompatActivity {
         EditText simekiri = findViewById(R.id.edit_text2);//タスクの締め切り日
         String text = task.getText().toString();       //タスクの内容の長さ
         //入力されたタスクの内容が１文字未満のとき「1文字以上で入力してください」と表示
-       /* if (text.length() < 1) {
+        if (text.length() < 1) {
 
             Toast.makeText(ToDo_Input.this, R.string.toast_failed1, Toast.LENGTH_LONG).show();
 
-        } else {*/
+        } else {
             //データベースに保存
             SQLiteDatabase database = null;
 
@@ -83,7 +90,7 @@ public class ToDo_Input extends AppCompatActivity {
             Toast.makeText(ToDo_Input.this, R.string.toast_register, Toast.LENGTH_LONG).show();
         }
 
-
+    }
 
     //締め切り日がクリックされたとき日付ダイアログを表示
     public void edit_text2_onClick(View view) {
@@ -113,8 +120,20 @@ public class ToDo_Input extends AppCompatActivity {
 
     }
 
-    public void onTapEvent(View view) { //(View)ビュー
 
+    public boolean onTouchEvent(MotionEvent event) {
+
+// キーボードを隠す
+        inputMethodManager.hideSoftInputFromWindow(mainLayout.getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
+// 背景にフォーカスを移す
+        mainLayout.requestFocus();
+
+        return true;
+    }
+
+
+    public void onTapEvent(View view) { //(View)ビュー
         DialogFragment dialogFragment = new popup();
         //　ダイアログをだす
         dialogFragment.show(getSupportFragmentManager(), "popup");
