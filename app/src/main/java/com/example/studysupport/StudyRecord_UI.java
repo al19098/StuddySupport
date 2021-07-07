@@ -28,6 +28,8 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static java.lang.Integer.parseInt;
+
 
 public class StudyRecord_UI extends AppCompatActivity {
     BarChart chart;
@@ -38,19 +40,28 @@ public class StudyRecord_UI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study);
 
-        /*Calendar cal = Calendar.getInstance();
-        int monday = cal.get(Calendar.DAY_OF_WEEK);
-        if(monday==4) {
-            String reset = " ";
-            goalsyori.resetGoal(reset);
-        }*/
         TextView goaltext = (TextView) findViewById(R.id.readtime);
         goaltext.setText(goalsyori.getGoal());
-
 
         TextView percenttext = (TextView) findViewById(R.id.percenttime);
         percenttext.setText(String.valueOf(percentcal.cal()));
 
+        Calendar cal1 = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
+        Calendar cal2 = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
+        int[] beforetime3 =new int[3];
+        String beforetime1 = goalsyori.getTime();
+        Log.d("beforetime1",beforetime1);
+        String[] beforetime2 = beforetime1.split("．");
+        Log.d("beforetime2" ,beforetime2[0] + beforetime2[1] + beforetime2[2]);
+        beforetime3[0] = Integer.parseInt(beforetime2[0]);
+        if(beforetime3[0] >= 2021){
+            cal2.set(Calendar.YEAR,parseInt(beforetime2[0]));
+            cal2.set(Calendar.MONTH,parseInt(beforetime2[1]));
+            cal2.set(Calendar.DATE,parseInt(beforetime2[2]));
+            if(cal1.get(Calendar.DAY_OF_WEEK) ==Calendar.MONDAY && cal1.after(cal2)) {
+                goalsyori.resetGoal("0");
+            }
+        }
 
         Button hintbutton = (Button) findViewById(R.id.hintbutton);//リスナーをボタンに登録
         hintbutton.setOnClickListener(new View.OnClickListener() { //確認ボタンが押されたときの処理

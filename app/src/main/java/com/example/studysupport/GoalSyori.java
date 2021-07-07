@@ -5,8 +5,14 @@ public class GoalSyori {
     String getGoal() {
         String text;
         Managegoal read = new Managegoal();
-        text = read.readFile();
+        text = read.readGoal();
         return text;
+    }
+    String getTime() {
+        String time;
+        Managegoal read = new Managegoal();
+        time = read.readTime();
+        return time;
     }
     //ファイルに目標を保存する
     void setGoal(String text){
