@@ -2,7 +2,7 @@
  ***  ModuleName  :StudyRecord_UI.java
  ***  Version     :V1.2
  ***  Designer    :桑原　赳
- ***  Date        :2021.06.23
+ ***  Date        :2021.07.05
  ***  Purpose     :学習記録のメイン画面での処理
  ***
  ********************************************************************/
@@ -18,7 +18,6 @@ package com.example.studysupport;
 /*********************************************/
 /*   import file（ファイルの取り込み）    */
 /*********************************************/
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -26,7 +25,6 @@ import androidx.fragment.app.DialogFragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -48,7 +46,6 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import static java.lang.Integer.parseInt;
-
 
 public class StudyRecord_UI extends AppCompatActivity {
     BarChart chart;  // 棒グラフ
