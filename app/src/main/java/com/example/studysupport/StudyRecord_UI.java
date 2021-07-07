@@ -1,4 +1,23 @@
+/********************************************************************
+ ***  ModuleName  :StudyRecord_UI.java
+ ***  Version     :V1.2
+ ***  Designer    :桑原　赳
+ ***  Date        :2021.06.23
+ ***  Purpose     :学習記録のメイン画面での処理
+ ***
+ ********************************************************************/
+/*
+ ***Revision :
+ *** V1.0 : 桑原赳 2021.06.23
+ *** V1.1 : 桑原赳,大谷真由 2021.06.28 改訂内容 232~241行目　日別学習時間の取得
+ *** V1.2 : 桑原赳、大谷真由　2021/07.05 改訂内容 　64～79行目　週間目標リセット
+ */
+
 package com.example.studysupport;
+
+/*********************************************/
+/*   import file（ファイルの取り込み）    */
+/*********************************************/
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +51,7 @@ import static java.lang.Integer.parseInt;
 
 
 public class StudyRecord_UI extends AppCompatActivity {
-    BarChart chart;
+    BarChart chart;  // 棒グラフ
     GoalSyori goalsyori = new GoalSyori();
     Percentcal percentcal = new Percentcal();
     @Override
@@ -40,21 +59,19 @@ public class StudyRecord_UI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study);
 
-        TextView goaltext = (TextView) findViewById(R.id.readtime);
+        TextView goaltext = (TextView) findViewById(R.id.readtime); // 目標テキスト
         goaltext.setText(goalsyori.getGoal());
 
-        TextView percenttext = (TextView) findViewById(R.id.percenttime);
+        TextView percenttext = (TextView) findViewById(R.id.percenttime); // 達成率テキスト
         percenttext.setText(String.valueOf(percentcal.cal()));
 
         Calendar cal1 = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
         Calendar cal2 = Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
-        int[] beforetime3 =new int[3];
-        String beforetime1 = goalsyori.getTime();
-        Log.d("beforetime1",beforetime1);
+
+        String beforetime1 = goalsyori.getTime(); // 目標入力時間
         String[] beforetime2 = beforetime1.split("．");
-        Log.d("beforetime2" ,beforetime2[0] + beforetime2[1] + beforetime2[2]);
-        beforetime3[0] = Integer.parseInt(beforetime2[0]);
-        if(beforetime3[0] >= 2021){
+        int beforetime3 = Integer.parseInt(beforetime2[0]); // 目標入力年
+        if(beforetime3 >= 2021){
             cal2.set(Calendar.YEAR,parseInt(beforetime2[0]));
             cal2.set(Calendar.MONTH,parseInt(beforetime2[1]));
             cal2.set(Calendar.DATE,parseInt(beforetime2[2]));
@@ -63,8 +80,9 @@ public class StudyRecord_UI extends AppCompatActivity {
             }
         }
 
-        Button hintbutton = (Button) findViewById(R.id.hintbutton);//リスナーをボタンに登録
-        hintbutton.setOnClickListener(new View.OnClickListener() { //確認ボタンが押されたときの処理
+        //？ボタンを登録、ボタンが押されたときの処理
+        Button hintbutton = (Button) findViewById(R.id.hintbutton);
+        hintbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DialogFragment dialogFragment = new popup();
@@ -72,8 +90,8 @@ public class StudyRecord_UI extends AppCompatActivity {
                 dialogFragment.show(getSupportFragmentManager(), "popup");
             }
         });
-
-        Button setgoalbutton = (Button) findViewById(R.id.setgoalbutton);//リスナーをボタンに登録
+        //目標設定ボタンを登録、ボタンが押されたときの処理
+        Button setgoalbutton = (Button) findViewById(R.id.setgoalbutton);
         setgoalbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {    //ボタンが押された時の処理
@@ -82,12 +100,11 @@ public class StudyRecord_UI extends AppCompatActivity {
             }
         });
 
-        //宣言
+        //他の画面への画面遷移宣言
         BottomNavigationView menu = findViewById(R.id.bnv);
         menu.getMenu().findItem(R.id.Study).setChecked(true);
 
-
-//画面遷移
+        //他の画面への画面遷移
         menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
@@ -184,11 +201,6 @@ public class StudyRecord_UI extends AppCompatActivity {
         XAxis xAxis = chart.getXAxis();
         //X軸に表示するLabelのリスト(最初の""は原点の位置)
         int mon1;
-        /*if (cl.get(cl.MONTH) == 0) {
-            mon1 = 12;
-        } else {
-            mon1 = cl.get(cl.MONTH);
-        }*/
         mon1 = cl.get(cl.MONTH) + 1;
         Integer mon1i = Integer.valueOf(mon1);
         String mon1s = mon1i.toString();
@@ -226,26 +238,23 @@ public class StudyRecord_UI extends AppCompatActivity {
         chart.getDescription().setEnabled(false);
         chart.setClickable(false);
     }
+
     //棒グラフのデータを取得
-    private List<IBarDataSet> getBarData() {//表示させるデータ
+    private List<IBarDataSet> getBarData() {
+        int time; //読み込んだ日別学習時間
         Calendar cl=Calendar.getInstance(TimeZone.getTimeZone("Asia/Tokyo"));
         ArrayList<BarEntry> entries = new ArrayList<>();
         DailyStudyTime dailystudytime=new DailyStudyTime();
         for(int i=7;i>0;i--){
-            int time=dailystudytime.read(cl);
-            //Log.d("studytime", "" + cl + time);
+            time=dailystudytime.read(cl);
             if(time==-1)
                 time=0;
             entries.add(new BarEntry(i,time));
             cl.add(Calendar.DATE,-1);
         }
-
         List<IBarDataSet> bars = new ArrayList<>();
-        BarDataSet dataSet = new BarDataSet(entries, "学習時間");
-
-        //Barの色をセット
+        BarDataSet dataSet = new BarDataSet(entries, "学習時間:min");
         bars.add(dataSet);
-
         return bars;
     }
 }
