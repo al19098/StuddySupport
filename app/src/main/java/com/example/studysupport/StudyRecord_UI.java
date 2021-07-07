@@ -82,7 +82,9 @@ public class StudyRecord_UI extends AppCompatActivity {
         hintbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dialogFragment = new popup();
+                DialogFragment dialogFragment = new popup(
+                        "・目標設定ボタンを押して、目標時間を入力すると、設定できます。" +
+                                ""+"\n"+"・グラフでは、直近7日間の学習時間を表示しています。");
                 //ダイアログをだす
                 dialogFragment.show(getSupportFragmentManager(), "popup");
             }
