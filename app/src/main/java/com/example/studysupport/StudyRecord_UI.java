@@ -72,7 +72,7 @@ public class StudyRecord_UI extends AppCompatActivity {
             cal2.set(Calendar.YEAR,parseInt(beforetime2[0]));
             cal2.set(Calendar.MONTH,parseInt(beforetime2[1]));
             cal2.set(Calendar.DATE,parseInt(beforetime2[2]));
-            if(cal1.get(Calendar.DAY_OF_WEEK) ==Calendar.MONDAY && cal1.after(cal2)) {
+            if(cal1.get(Calendar.DAY_OF_WEEK) ==Calendar.MONDAY && cal1.after(cal2) == true) {
                 goalsyori.resetGoal("0");
             }
         }
