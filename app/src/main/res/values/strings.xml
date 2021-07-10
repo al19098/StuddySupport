@@ -19,7 +19,7 @@
     <string name="goalpercent">達成度</string>
     <string name="percent">％</string>
     <string name="dialogtitle">エラー</string>
-    <string name="dialogmsg">168時間未満の時間を入力してください</string>
+    <string name="dialogmsg">168時間以下の時間を入力してください</string>
     <string name="dialogbutton">閉じる</string>
     <string name="hintbutton">？</string>
     <string name="hintdialogbutton">OK</string>
