@@ -74,6 +74,7 @@ public class StudyRecord_UI extends AppCompatActivity {
             cal2.set(Calendar.DATE,parseInt(beforetime2[2]));
             if(cal1.get(Calendar.DAY_OF_WEEK) ==Calendar.MONDAY && cal1.after(cal2) == true) {
                 goalsyori.resetGoal("0");
+                goaltext.setText(goalsyori.getGoal());
             }
         }
 
@@ -83,8 +84,9 @@ public class StudyRecord_UI extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DialogFragment dialogFragment = new popup(
-                        "・目標設定ボタンを押して、目標時間を入力すると、設定できます。" +
-                                ""+"\n"+"・グラフでは、直近7日間の学習時間を表示しています。");
+                        "・目標設定ボタンを押して、目標時間を入力すると、設定できます。"+"\n"
+                                +"・グラフでは、直近7日間の学習時間を表示しています。"+"\n"
+                                    +"・月曜日になったら達成率が0％になるので目標時間を設定しなおしてください。");
                 //ダイアログをだす
                 dialogFragment.show(getSupportFragmentManager(), "popup");
             }
